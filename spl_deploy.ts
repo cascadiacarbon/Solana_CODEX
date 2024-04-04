@@ -31,7 +31,7 @@ import {
 import { loadSecretKey, saveSecretKey } from './utils';
 
 const decimals = 18;
-const maxSupply = BigInt(1_000_000_000_000_000_000); // 1B token
+const maxSupply = BigInt(1_000_000_000_000_000_000_000_000_000); // 1B token
 
 (async () => {
   const mintAuth = await loadSecretKey('mintAuth.key');
