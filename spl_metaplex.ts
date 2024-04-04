@@ -25,7 +25,7 @@ import { loadSecretKey, saveSecretKey } from './utils';
 import token_metadata from './token.json';
 
 void (async function () {
-  const signer = await loadSecretKey('signer.key');
+  const signer = await loadSecretKey('mintAuth.key');
   const mintKeypair = await loadSecretKey('mint.key');
   if (!signer || !mintKeypair) {
     process.exit(1);
@@ -46,8 +46,8 @@ void (async function () {
     mint: publicKey(mintKeypair.publicKey.toString()),
     name: token_metadata.name,
     symbol: token_metadata.symbol,
-    decimals: 9,
-    uri: "https://ipfs.io/ipfs/bafkreifgmjlkzzn2ww5w6edegswaz5amcmxofb6johz34s226b6suk6l4m",
+    decimals: 18,
+    uri: "https://eu.starton-ipfs.com/ipfs//bafkreic2ulorhpwziastawskmavjbdxhmu2kd2d6ih73h6yrnxhqatlnla",
     sellerFeeBasisPoints: percentAmount(0),
     creators: null,
     isMutable: true,

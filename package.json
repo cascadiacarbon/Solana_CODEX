@@ -17,6 +17,6 @@
   "scripts": {
     "deploy": "ts-node spl_deploy.ts",
     "collectFee": "ts-node collectFee.ts",
-    "metaplex": "ts-node metaplex.ts"
+    "metaplex": "ts-node spl_metaplex.ts"
   }
 }
