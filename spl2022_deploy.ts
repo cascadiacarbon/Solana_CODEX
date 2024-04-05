@@ -5,7 +5,6 @@ import {
   Keypair,
   SystemProgram,
   Transaction,
-  LAMPORTS_PER_SOL,
 } from '@solana/web3.js';
 
 import {
@@ -15,16 +14,10 @@ import {
   createAccount,
   getMintLen,
   TOKEN_2022_PROGRAM_ID,
-  unpackAccount,
-  getTransferFeeAmount,
 } from '@solana/spl-token';
 
 import {
   createInitializeTransferFeeConfigInstruction,
-  harvestWithheldTokensToMint,
-  transferCheckedWithFee,
-  withdrawWithheldTokensFromAccounts,
-  withdrawWithheldTokensFromMint,
 } from '@solana/spl-token';
 
 import * as dotenv from 'dotenv';

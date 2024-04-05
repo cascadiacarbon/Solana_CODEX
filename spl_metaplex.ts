@@ -1,27 +1,20 @@
 import {
   percentAmount,
-  generateSigner,
   createSignerFromKeypair,
   signerIdentity,
   publicKey,
 } from '@metaplex-foundation/umi';
 import {
   TokenStandard,
-  createAndMint,
-  createMetadataAccountV3,
   createV1
 } from '@metaplex-foundation/mpl-token-metadata';
 import { createUmi } from '@metaplex-foundation/umi-bundle-defaults';
 import { mplCandyMachine } from '@metaplex-foundation/mpl-candy-machine';
 
-import { readFile, writeFile } from 'fs/promises';
-import { decode } from 'bs58';
-import { Keypair } from '@solana/web3.js';
-
 import * as dotenv from 'dotenv';
 dotenv.config();
 
-import { loadSecretKey, saveSecretKey } from './utils';
+import { loadSecretKey } from './utils';
 import token_metadata from './token.json';
 
 void (async function () {
@@ -46,7 +39,7 @@ void (async function () {
     mint: publicKey(mintKeypair.publicKey.toString()),
     name: token_metadata.name,
     symbol: token_metadata.symbol,
-    decimals: 18,
+    decimals: 9,
     uri: "https://eu.starton-ipfs.com/ipfs//bafkreic2ulorhpwziastawskmavjbdxhmu2kd2d6ih73h6yrnxhqatlnla",
     sellerFeeBasisPoints: percentAmount(0),
     creators: null,
@@ -64,26 +57,4 @@ void (async function () {
     .then(() => {
       console.log('Successfully set metadata.');
     });
-
-
-  /*
-  const mint = generateSigner(umi);
-  createAndMint(umi, {
-    mint,
-    authority: umi.identity,
-    name: token_metadata.name,
-    symbol: token_metadata.symbol,
-    decimals: 9,
-    uri: "https://ipfs.io/ipfs/bafkreifgmjlkzzn2ww5w6edegswaz5amcmxofb6johz34s226b6suk6l4m",
-    sellerFeeBasisPoints: percentAmount(0),
-    amount: 100_000_000_000_000,
-    tokenOwner: userWallet.publicKey,
-    tokenStandard: TokenStandard.Fungible,
-    splTokenProgram: SPL_TOKEN_2022_PROGRAM_ID,
-  })
-    .sendAndConfirm(umi)
-    .then(() => {
-      console.log("Successfully deployed");
-    });*/
-
 })();

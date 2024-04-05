@@ -3,35 +3,21 @@ dotenv.config();
 
 import {
   clusterApiUrl,
-  sendAndConfirmTransaction,
   Connection,
   Keypair,
-  SystemProgram,
-  Transaction,
-  LAMPORTS_PER_SOL,
-  PublicKey,
 } from '@solana/web3.js';
 
 import {
   createMint,
   mintTo,
   createAccount,
-  getMintLen,
   TOKEN_PROGRAM_ID,
-  TOKEN_2022_PROGRAM_ID,
-  unpackAccount,
-  getTransferFeeAmount,
-  createInitializeTransferFeeConfigInstruction,
-  harvestWithheldTokensToMint,
-  transferCheckedWithFee,
-  withdrawWithheldTokensFromAccounts,
-  withdrawWithheldTokensFromMint,
 } from '@solana/spl-token';
 
 import { loadSecretKey, saveSecretKey } from './utils';
 
-const decimals = 18;
-const maxSupply = BigInt(1_000_000_000_000_000_000_000_000_000); // 1B token
+const decimals = 9;
+const maxSupply = BigInt(1_000_000_000_000_000_000); // 1B token
 
 (async () => {
   const mintAuth = await loadSecretKey('mintAuth.key');
